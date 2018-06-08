@@ -109,4 +109,17 @@ public extension Swifter {
         }, failure: failure)
     }
     
+    /**
+    GET     direct_messages/events/list
+ 
+    */
+    public func getDirectEventsList(count: Int? = nil, cursor: String? = nil, success: SuccessHandler? = nil, failure: FailureHandler? = nil) {
+        let path = "direct_messages/events/list.json"
+        
+        var parameters = Dictionary<String, Any>()
+        parameters["count"] ??= count
+        parameters["cursor"] ??= cursor
+        
+        self.getJSON(path: path, baseURL: .api, parameters: parameters, success: { json, _ in success?(json) }, failure: failure)
+    }
 }
